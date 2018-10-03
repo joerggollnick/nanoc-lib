@@ -11,3 +11,15 @@ Compression is done before deployment.
 
 This is a helper to create an index page from all documents.
 
+## nanoc-redirector and redirect-to-filter
+
+This allows `redirect_from` and `redirect_to` in frontmatter.
+This version respects `index_files` and `output_dir` config.
+
+## thumbnailize
+
+This creates thumbnails from an image
+
+## jpegoptimize
+
+This simple filter allows to resize and sert quality for compression.
