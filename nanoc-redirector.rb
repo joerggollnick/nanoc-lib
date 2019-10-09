@@ -1,15 +1,17 @@
-require 'redirect-to-filter'
-
 module NanocRedirector
   VERSION = '0.3.0+'
   module RedirectFrom
-    def self.process(item, dest, config)
+    def self.process(item, dest, config = nil)
       return if item[:redirect_from].nil?
       return if dest.nil?
       redirect_hash = {}
-      output_dir     = config[:output_dir]
-      index_filename = config[:index_filenames][0]
-      
+      if config.nil?
+        output_dir = "output"
+        index_filename = "index.html"
+      else
+        output_dir     = config[:output_dir]
+        index_filename = config[:index_filenames][0]
+      end
 
       key = item.identifier.without_ext
       value = item[:redirect_from].is_a?(String) ? [item[:redirect_from]] : item[:redirect_from]
