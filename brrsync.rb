@@ -72,8 +72,7 @@ module Nanoc::Deploying::Deployers
     private
 
     def run_shell_cmd(cmd)
-      piper = Nanoc::Extra::Piper.new(stdout: $stdout, stderr: $stderr)
-      piper.run(cmd, nil)
+      TTY::Command.new(printer: :null).run(*cmd)
     end
 
     def run_recursive_shell_cmd( directory, cmd )
